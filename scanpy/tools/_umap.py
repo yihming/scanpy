@@ -110,6 +110,7 @@ def umap(
     else:
         a = a
         b = b
+    adata.uns['umap'] = {'params':{'a': a, 'b': b}}
     if init_pos in adata.obsm.keys():
         init_coords = adata.obsm[init_pos]
     elif init_pos == 'paga':
