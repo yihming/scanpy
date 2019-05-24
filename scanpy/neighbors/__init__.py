@@ -101,6 +101,7 @@ def neighbors(
         adata.uns['neighbors']['params']['use_rep'] = use_rep
     if n_pcs is not None:
         adata.uns['neighbors']['params']['n_pcs'] = n_pcs
+    adata.uns['neighbors']['indices'] = neighbors.knn_indices
     adata.uns['neighbors']['distances'] = neighbors.distances
     adata.uns['neighbors']['connectivities'] = neighbors.connectivities
     if neighbors.rp_forest is not None:
@@ -584,7 +585,7 @@ class Neighbors:
         use_rep: Optional[str] = None,
         method: str = 'umap',
         random_state: Optional[Union[RandomState, int]] = 0,
-        write_knn_indices: bool = False,
+        write_knn_indices: bool = True,
         metric: str = 'euclidean',
         metric_kwds: Mapping[str, Any] = {}
     ) -> None:
